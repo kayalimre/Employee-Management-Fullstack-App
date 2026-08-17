@@ -21,6 +21,9 @@ FROM nginx:alpine
 # Copy the build artifacts from the builder stage
 COPY --from=builder /app/build /usr/share/nginx/html
 
+# Serve as a single-page app: fall back to index.html for client-side routes
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Expose the default port for Nginx
 EXPOSE 80
 
