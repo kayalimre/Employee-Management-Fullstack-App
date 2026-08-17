@@ -47,7 +47,8 @@ yarn-error.log*
 .mvn/wrapper/maven-wrapper.jar
 
 # Claude workspace
-.claude/
+.claude/*
+!.claude/settings.json
 /.idea/dataSources.xml
 /.idea/db-forest-config.xml
 /.idea/dataSources/data_sources_history.xml
