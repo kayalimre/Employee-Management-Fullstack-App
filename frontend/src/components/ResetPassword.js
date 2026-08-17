@@ -6,6 +6,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { extractFetchError } from '../utils/apiError';
 import { notifySuccess, notifyError, notifyWarning } from '../utils/toast';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://employee-management-app-gdm5.onrender.com';
+
 const ResetPassword = () => {
   const [username, setUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -36,7 +38,7 @@ const ResetPassword = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://employee-management-app-gdm5.onrender.com/reset-password', {
+      const response = await fetch(`${API_BASE}/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, newPassword }),

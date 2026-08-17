@@ -1,0 +1,33 @@
+{
+  "pmo": { "provider": "github", "transition_on_complete": "In Review", "confirm": false },
+  "git": {
+    "provider": "github",
+    "remote": "origin",
+    "base_branch": "master",
+    "pull_request": { "create": true, "reviewers": [] },
+    "confirm": false
+  },
+  "resources": {
+    "github": {
+      "deployment": "cloud",
+      "owner": "kayalimre",
+      "default_repository": "Employee-Management-Fullstack-App",
+      "auth": { "method": "token", "token_env": "GITHUB_TOKEN" }
+    }
+  },
+  "retries": { "sprint_task": 3, "security": 1, "architect": 3, "web_ui": 3, "qa": 5 },
+  "models": { "agents": {}, "map": {} },
+  "planning": {
+    "granularity": {
+      "preset": "capability",
+      "split": {
+        "migration": "shared",
+        "tests": "folded",
+        "contracts": "shared",
+        "screen_states": "folded",
+        "endpoints": "per-family"
+      }
+    },
+    "objective": "balanced"
+  }
+}

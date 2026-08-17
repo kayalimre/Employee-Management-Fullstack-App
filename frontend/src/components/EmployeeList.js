@@ -77,7 +77,7 @@ const EmployeeList = () => {
 
   const handleDelete = async id => {
     setDeletingEmployeeId(id);
-    const removed = employees.find(employee => employee.id === id);
+    const removed = employees.find(employee => employee.id !== id);
     try {
       await deleteEmployee(id);
       setEmployees(prevEmployees => prevEmployees.filter(employee => employee.id !== id));

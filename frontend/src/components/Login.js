@@ -26,6 +26,8 @@ import { extractFetchError } from '../utils/apiError';
 import { notifySuccess, notifyError } from '../utils/toast';
 import LoadingOverlay from './LoadingOverlay';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://employee-management-app-gdm5.onrender.com';
+
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -44,7 +46,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://employee-management-app-gdm5.onrender.com/authenticate', {
+      const response = await fetch(`${API_BASE}/authenticate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),

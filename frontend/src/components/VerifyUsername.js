@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'; // Correct useNavigate
 import { extractFetchError } from '../utils/apiError';
 import { notifySuccess, notifyError } from '../utils/toast';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://employee-management-app-gdm5.onrender.com';
+
 const VerifyUsername = () => {
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
@@ -15,7 +17,7 @@ const VerifyUsername = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`https://employee-management-app-gdm5.onrender.com/verify-username/${username}`, {
+      const response = await fetch(`${API_BASE}/verify-username/${username}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });

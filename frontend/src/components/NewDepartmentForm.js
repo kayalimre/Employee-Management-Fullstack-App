@@ -4,6 +4,8 @@ import { TextField, Button, CircularProgress, Box } from '@mui/material';
 import { extractFetchError } from '../utils/apiError';
 import { notifySuccess, notifyError } from '../utils/toast';
 
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://employee-management-app-gdm5.onrender.com';
+
 const NewDepartmentForm = () => {
   const [department, setDepartment] = useState({ name: '' });
   const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +29,7 @@ const NewDepartmentForm = () => {
     };
 
     try {
-      const response = await fetch('https://employee-management-app-gdm5.onrender.com/api/departments', {
+      const response = await fetch(`${API_BASE}/api/departments`, {
         method: 'POST',
         headers: {
           Accept: '*/*',
